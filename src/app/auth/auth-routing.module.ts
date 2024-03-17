@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutPagesComponent } from './pages/layout-pages/layout-pages.component';
-import { NewPageComponent } from '../heroes/pages/new-page/new-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 // localhost:4200/auth
 const routes: Routes = [
@@ -10,8 +11,16 @@ const routes: Routes = [
     component: LayoutPagesComponent,
     children: [
       {
-        path: 'new-hero',
-        component: NewPageComponent
+        path: 'login',
+        component: LoginPageComponent
+      },
+      {
+        path: 'new-account',
+        component: RegisterPageComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'login'
       }
     ]
   },
