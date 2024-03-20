@@ -36,4 +36,5 @@ export class HeroPageComponent implements OnInit {
     this.router.navigateByUrl('heroes/list');
   }
 
+
 }

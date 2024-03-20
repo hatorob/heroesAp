@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of, switchMap } from 'rxjs';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from '../../../environments/environments';
 
@@ -22,6 +22,16 @@ export class HeroesService {
                 .pipe(
                   catchError( error => of(undefined) )
                 );
+  }
+
+  /* Autocomplete */
+
+  public getSuggestions = (query: string): Observable<Hero[]> => {
+
+    return this.http.get<Hero[]>(`${this.baseUrl}/heroes`)
+              .pipe(
+                map( heroes => heroes.filter( ({superhero}) => superhero!.toLowerCase().includes(query.toLowerCase())))
+              );
   }
 
 }
