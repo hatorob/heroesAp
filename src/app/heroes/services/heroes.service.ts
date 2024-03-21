@@ -65,8 +65,8 @@ export class HeroesService {
   public delatedHero = (id: string): Observable<boolean> => {
     return this.http.delete(`${this.baseUrl}/heroes/${id}`)
                 .pipe(
+                  map( resp => true ),
                   catchError( error => of(false)),
-                  map( resp => true )
                 )
   }
 
