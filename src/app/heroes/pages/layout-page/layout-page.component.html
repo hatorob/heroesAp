@@ -7,7 +7,8 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="spacer"> </span>
-    <button mat-button>Logout</button>
+    <span> {{ user?.user }} </span>
+    <button mat-button (click)="onLogout()">Logout</button>
 
   </mat-toolbar>
   <!--! Aquí creamos la barra horizontal con el botón de menú para expandirlo fin -->
